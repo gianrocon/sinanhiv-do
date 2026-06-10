@@ -1,0 +1,175 @@
+[form]
+name = "Sífilis Adquirida"
+description = "Ficha de Investigação Sífilis Adquirida"
+pdf = "sifilis_adquirida.pdf"
+
+[app]
+font_name = "helv"
+font_size = 9
+font_size_date = 9
+font_size_number = 9
+
+[dividers]
+apos = [
+  "unidade_saude",          # antes do bloco paciente
+  "nome_mae",               # antes de residência
+  "ddd_telefone",           # antes de dados clínicos/epidemiológicos
+  "comportamento_sexual",   # antes de lab não treponêmico
+  "data_nao_treponemico",   # antes do teste treponêmico (isolado)
+  "resultado_treponemico",  # antes de classificação clínica
+  "data_inicio_tratamento", # antes do investigador
+]
+
+[defaults]
+unidade_saude          = "CTA Marymar Novaes"
+codigo_unidade_saude   = "0072"
+uf_residencia          = "BA"
+municipio_residencia   = "SALVADOR"
+data_inicio_tratamento = "today"
+
+[fixed]
+uf_notificacao        = "BA"
+municipio_notificacao = "Salvador"
+ibge_municipio_notif  = "292740"
+data_diagnostico      = "today"
+
+[suppress_if]
+classificacao_final = "2"
+
+[computed]
+investigador_municipio_unidade = "{municipio_notificacao} / {unidade_saude}"
+
+[hidden]
+campos = [
+  "numero_notificacao",
+  "idade_valor",
+  "idade_unidade",
+  "ibge_municipio_notif",
+  "distrito",
+  "codigo_logradouro",
+  "ibge_municipio_resid",
+  "pais_exterior",
+  "geo_campo1",
+  "geo_campo2",
+  "ponto_referencia",
+  "zona",
+  "gestante",
+  "investigador_municipio_unidade",
+  "investigador_nome",
+  "investigador_funcao",
+]
+
+# ── Widgets ──────────────────────────────────────────────────────────────────
+
+
+[fields.codigo_unidade_saude]
+col_span  = 1
+max_chars = 8
+
+[fields.nome_paciente]
+col_span = 3
+
+[fields.nome_mae]
+col_span = 3
+
+[fields.ocupacao]
+col_span = 4
+
+[fields.sexo]
+options       = ["M - Masculino", "F - Feminino", "I - Ignorado"]
+values        = ["M", "F", "I"]
+default_index = 0
+
+[fields.raca_cor]
+options       = ["1 - Branca", "2 - Preta", "3 - Amarela", "4 - Parda", "5 - Indigena", "9 - Ignorado"]
+values        = ["1", "2", "3", "4", "5", "9"]
+default_index = 3
+
+[fields.escolaridade]
+options       = ["0 - Analfabeto",
+                 "1 - 1a a 4a serie incompleta EF",
+                 "2 - 4a serie completa EF",
+                 "3 - 5a a 8a serie incompleta EF",
+                 "4 - EF completo",
+                 "5 - EM incompleto",
+                 "6 - EM completo",
+                 "7 - Superior incompleto",
+                 "8 - Superior completo",
+                 "9 - Ignorado",
+                 "10 - Nao se aplica"]
+values        = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+default_index = 9
+
+[fields.antecedente_sifilis]
+widget        = "radio"
+options       = ["1 - Sim", "2 - Nao", "9 - Ignorado"]
+values        = ["1", "2", "9"]
+default_index = 2
+horizontal    = true
+col_span      = 2
+
+[fields.tratamento_realizado]
+widget        = "radio"
+options       = ["1 - Sim", "2 - Nao", "9 - Ignorado"]
+values        = ["1", "2", "9"]
+default_index = 2
+horizontal    = true
+col_span      = 2
+
+[fields.comportamento_sexual]
+widget        = "radio"
+options       = ["1 - Relacoes sexuais com homens",
+                 "2 - Relacoes sexuais com mulheres",
+                 "3 - Relacoes sexuais com homens e mulheres",
+                 "9 - Ignorado"]
+values        = ["1", "2", "3", "9"]
+default_index = 0
+horizontal    = false
+
+[fields.resultado_nao_treponemico]
+widget        = "radio"
+options       = ["1 - Reagente", "2 - Nao Reagente", "3 - Nao Realizado", "9 - Ignorado"]
+values        = ["1", "2", "3", "9"]
+allow_none    = true
+horizontal    = true
+col_span      = 2
+
+[fields.titulo_nao_treponemico]
+col_span      = 1
+
+[fields.resultado_treponemico]
+widget        = "radio"
+options       = ["1 - Reagente", "2 - Nao reagente", "3 - Nao realizado", "9 - Ignorado"]
+values        = ["1", "2", "3", "9"]
+allow_none    = true
+horizontal    = true
+col_span      = 4
+
+[fields.classificacao_clinica]
+widget        = "radio"
+options       = ["1 - Primaria", "2 - Secundaria", "3 - Terciaria", "4 - Latente", "9 - Ignorado"]
+values        = ["1", "2", "3", "4", "9"]
+allow_none    = true
+horizontal    = true
+col_span      = 3
+
+[fields.classificacao_final]
+widget        = "radio"
+options       = ["1 - Sim", "2 - Nao"]
+values        = ["1", "2"]
+allow_none    = true
+horizontal    = true
+col_span      = 1
+
+[fields.esquema_tratamento]
+widget        = "radio"
+options       = ["1 - Penicilina G benzantina 2.400.000 UI",
+                 "2 - Penicilina G benzantina 4.800.000 UI",
+                 "3 - Penicilina G benzantina 7.200.000 UI",
+                 "4 - Outro esquema",
+                 "5 - Nao realizado",
+                 "9 - Ignorado"]
+values        = ["1", "2", "3", "4", "5", "9"]
+allow_none    = true
+horizontal    = false
+col_span      = 4

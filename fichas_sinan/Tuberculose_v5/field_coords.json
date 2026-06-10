@@ -1,0 +1,527 @@
+{
+  "numero_notificacao": {
+    "page": 1,
+    "x": 471.7,
+    "y": 30.7,
+    "label": "Número da Notificação"
+  },
+  "data_notificacao": {
+    "page": 1,
+    "x": 461.0,
+    "y": 134.0,
+    "label": "Data da Notificação"
+  },
+  "uf_notificacao": {
+    "page": 1,
+    "x": 56.0,
+    "y": 167.0,
+    "label": "UF de Notificação"
+  },
+  "municipio_notificacao": {
+    "page": 1,
+    "x": 95.0,
+    "y": 167.0,
+    "label": "Município de Notificação"
+  },
+  "ibge_municipio_notif": {
+    "page": 1,
+    "x": 483.7,
+    "y": 164.9,
+    "label": "IBGE Município Notif."
+  },
+  "unidade_saude": {
+    "page": 1,
+    "x": 75.7,
+    "y": 194.4,
+    "label": "Unidade de Saúde"
+  },
+  "codigo_unidade_saude": {
+    "page": 1,
+    "x": 341.2,
+    "y": 192.9,
+    "label": "Código CNES"
+  },
+  "data_diagnostico": {
+    "page": 1,
+    "x": 453.7,
+    "y": 192.9,
+    "label": "Data do Diagnóstico"
+  },
+  "nome_paciente": {
+    "page": 1,
+    "x": 67.0,
+    "y": 222.0,
+    "label": "Nome do Paciente"
+  },
+  "data_nascimento": {
+    "page": 1,
+    "x": 463.0,
+    "y": 224.0,
+    "label": "Data de Nascimento"
+  },
+  "idade_valor": {
+    "page": 1,
+    "x": 65.0,
+    "y": 256.0,
+    "label": "Idade (Valor)"
+  },
+  "sexo": {
+    "page": 1,
+    "x": 226.7,
+    "y": 240.9,
+    "label": "Sexo (M/F/I)"
+  },
+  "gestante": {
+    "page": 1,
+    "x": 421.2,
+    "y": 240.9,
+    "label": "Gestante"
+  },
+  "raca_cor": {
+    "page": 1,
+    "x": 545.7,
+    "y": 239.9,
+    "label": "Raça/Cor"
+  },
+  "escolaridade": {
+    "page": 1,
+    "x": 547.2,
+    "y": 270.4,
+    "label": "Escolaridade"
+  },
+  "cartao_sus": {
+    "page": 1,
+    "x": 73.7,
+    "y": 314.4,
+    "label": "Cartão SUS"
+  },
+  "nome_mae": {
+    "page": 1,
+    "x": 246.2,
+    "y": 312.4,
+    "label": "Nome da Mãe"
+  },
+  "uf_residencia": {
+    "page": 1,
+    "x": 59.7,
+    "y": 343.9,
+    "label": "UF de Residência"
+  },
+  "municipio_residencia": {
+    "page": 1,
+    "x": 101.2,
+    "y": 342.4,
+    "label": "Município de Residência"
+  },
+  "ibge_municipio_resid": {
+    "page": 1,
+    "x": 332.7,
+    "y": 342.9,
+    "label": "IBGE Município Resid."
+  },
+  "distrito": {
+    "page": 1,
+    "x": 425.2,
+    "y": 342.4,
+    "label": "Distrito"
+  },
+  "bairro": {
+    "page": 1,
+    "x": 71.2,
+    "y": 366.9,
+    "label": "Bairro"
+  },
+  "logradouro": {
+    "page": 1,
+    "x": 211.2,
+    "y": 368.4,
+    "label": "Logradouro"
+  },
+  "codigo_logradouro": {
+    "page": 1,
+    "x": 481.2,
+    "y": 368.9,
+    "label": "Código do Logradouro"
+  },
+  "numero_residencia": {
+    "page": 1,
+    "x": 70.2,
+    "y": 390.4,
+    "label": "Número"
+  },
+  "complemento": {
+    "page": 1,
+    "x": 120.0,
+    "y": 394.0,
+    "label": "Complemento"
+  },
+  "geo_campo1": {
+    "page": 1,
+    "x": 415.0,
+    "y": 394.0,
+    "label": "Geo Campo 1"
+  },
+  "geo_campo2": {
+    "page": 1,
+    "x": 66.0,
+    "y": 417.0,
+    "label": "Geo Campo 2"
+  },
+  "ponto_referencia": {
+    "page": 1,
+    "x": 227.0,
+    "y": 417.0,
+    "label": "Ponto de Referência"
+  },
+  "cep": {
+    "page": 1,
+    "x": 459.7,
+    "y": 420.4,
+    "label": "CEP"
+  },
+  "ddd_telefone": {
+    "page": 1,
+    "x": 71.7,
+    "y": 444.4,
+    "label": "(DDD) Telefone"
+  },
+  "zona": {
+    "page": 1,
+    "x": 327.7,
+    "y": 433.4,
+    "label": "Zona"
+  },
+  "pais_exterior": {
+    "page": 1,
+    "x": 361.0,
+    "y": 446.0,
+    "label": "País (exterior)"
+  },
+  "nu_prontuario": {
+    "page": 1,
+    "x": 69.2,
+    "y": 488.9,
+    "label": "Nº do Prontuário"
+  },
+  "tp_entrada": {
+    "page": 1,
+    "x": 543.7,
+    "y": 476.9,
+    "label": "Tipo de Entrada"
+  },
+  "tp_pop_liberdade": {
+    "page": 1,
+    "x": 174.2,
+    "y": 502.9,
+    "label": "Pop. Privada de Liberdade"
+  },
+  "tp_pop_rua": {
+    "page": 1,
+    "x": 175.7,
+    "y": 514.4,
+    "label": "Pop. em Situação de Rua"
+  },
+  "tp_pop_profissional": {
+    "page": 1,
+    "x": 309.2,
+    "y": 503.4,
+    "label": "Profissional de Saúde"
+  },
+  "tp_pop_imigrante": {
+    "page": 1,
+    "x": 329.7,
+    "y": 512.9,
+    "label": "Imigrante"
+  },
+  "tp_pop_beneficiario": {
+    "page": 1,
+    "x": 549.2,
+    "y": 503.9,
+    "label": "Beneficiário de Programa Social"
+  },
+  "tp_forma": {
+    "page": 1,
+    "x": 222.7,
+    "y": 534.9,
+    "label": "Forma"
+  },
+  "tp_extrapulmonar": {
+    "page": 1,
+    "x": 544.7,
+    "y": 535.4,
+    "label": "Se Extrapulmonar"
+  },
+  "ds_extrapulmonar_outro": {
+    "page": 1,
+    "x": 507.2,
+    "y": 550.9,
+    "label": "Extrapulmonar Outra"
+  },
+  "st_agravo_aids": {
+    "page": 1,
+    "x": 195.7,
+    "y": 571.4,
+    "label": "Agravo: Aids"
+  },
+  "st_agravo_alcolismo": {
+    "page": 1,
+    "x": 242.2,
+    "y": 571.9,
+    "label": "Agravo: Alcoolismo"
+  },
+  "st_agravo_diabete": {
+    "page": 1,
+    "x": 309.7,
+    "y": 570.4,
+    "label": "Agravo: Diabetes"
+  },
+  "st_agravo_mental": {
+    "page": 1,
+    "x": 373.7,
+    "y": 572.4,
+    "label": "Agravo: Doença Mental"
+  },
+  "st_agravo_drogas": {
+    "page": 1,
+    "x": 195.2,
+    "y": 585.4,
+    "label": "Agravo: Uso de Drogas"
+  },
+  "st_agravo_tabaco": {
+    "page": 1,
+    "x": 329.7,
+    "y": 587.4,
+    "display_order": 586,
+    "label": "Agravo: Tabagismo"
+  },
+  "st_agravo_outro": {
+    "page": 1,
+    "x": 389.2,
+    "y": 587.3,
+    "display_order": 590,
+    "label": "Agravo: Outras"
+  },
+  "ds_agravo_outro": {
+    "page": 1,
+    "x": 454.2,
+    "y": 583.6,
+    "display_order": 591,
+    "label": "Agravo Outra (descrição)"
+  },
+  "st_baciloscopia_escarro": {
+    "page": 1,
+    "x": 208.7,
+    "y": 603.6,
+    "label": "Baciloscopia Escarro (diagnóstico)"
+  },
+  "tp_raio_x": {
+    "page": 1,
+    "x": 385.7,
+    "y": 605.6,
+    "label": "Radiografia do Tórax"
+  },
+  "tp_hiv": {
+    "page": 1,
+    "x": 541.2,
+    "y": 605.6,
+    "label": "HIV"
+  },
+  "tp_antirretroviral_tratament": {
+    "page": 1,
+    "x": 234.7,
+    "y": 656.1,
+    "label": "Terapia Antirretroviral (TB)"
+  },
+  "tp_histopatologia": {
+    "page": 1,
+    "x": 533.2,
+    "y": 637.6,
+    "label": "Histopatologia"
+  },
+  "tp_cultura_escarro": {
+    "page": 1,
+    "x": 135.7,
+    "y": 680.1,
+    "label": "Cultura"
+  },
+  "tp_molecular": {
+    "page": 1,
+    "x": 319.2,
+    "y": 677.6,
+    "label": "TMR-TB"
+  },
+  "tp_sensibilidade": {
+    "page": 1,
+    "x": 534.7,
+    "y": 681.6,
+    "label": "Teste de Sensibilidade"
+  },
+  "dt_inicio_tratamento": {
+    "page": 1,
+    "x": 73.7,
+    "y": 755.4,
+    "label": "Data de Início do Tratamento"
+  },
+  "nu_contato_identificados": {
+    "page": 1,
+    "x": 228.7,
+    "y": 751.9,
+    "label": "Total de Contatos Identificados"
+  },
+  "st_baciloscopia_1_mes": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Baciloscopia no 1º Mês"
+  },
+  "st_baciloscopia_2_mes": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Baciloscopia no 2º Mês"
+  },
+  "st_baciloscopia_3_mes": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Baciloscopia no 3º Mês"
+  },
+  "st_baciloscopia_4_mes": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Baciloscopia no 4º Mês"
+  },
+  "st_baciloscopia_5_mes": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Baciloscopia no 5º Mês"
+  },
+  "st_baciloscopia_6_mes": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Baciloscopia no 6º Mês"
+  },
+  "st_baciloscopia_apos_6_mes": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Baciloscopia após 6º Mês"
+  },
+  "tp_tratamento_acompanhame": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Tratamento no Mês (acompanhamento)"
+  },
+  "nu_contato_examinado": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Contatos Examinados"
+  },
+  "nu_prontuario_atual": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Nº Prontuário Atual"
+  },
+  "tp_situacao_encerramento": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Situação de Encerramento"
+  },
+  "tp_transf": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Tipo de Transferência"
+  },
+  "co_uf_transf": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "UF de Transferência"
+  },
+  "co_municipio_transf": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Município de Transferência"
+  },
+  "dt_encerramento": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Data de Encerramento"
+  },
+  "co_uf_atual": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "UF Atual"
+  },
+  "co_municipio_atual": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Município Atual"
+  },
+  "nu_notificacao_atual": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Nº Notificação Atual"
+  },
+  "dt_notificacao_atual": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Data Notificação Atual"
+  },
+  "co_unidade_saude_atual": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Unidade de Saúde Atual"
+  },
+  "co_uf_residencia_atual": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "UF Residência Atual"
+  },
+  "co_municipio_residencia_atual": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Município Residência Atual"
+  },
+  "nu_cep_residencia_atual": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "CEP Residência Atual"
+  },
+  "co_distrito_residencia_atual": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Distrito Residência Atual"
+  },
+  "co_bairro_residencia_atual": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Bairro Residência Atual"
+  },
+  "no_bairro_residencia_atual": {
+    "page": 1,
+    "x": 0.0,
+    "y": 0.0,
+    "label": "Nome Bairro Residência Atual"
+  }
+}

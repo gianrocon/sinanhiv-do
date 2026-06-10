@@ -1,0 +1,203 @@
+[form]
+name        = "Tuberculose"
+description = "Ficha de Notificação Tuberculose"
+pdf         = "Tuberculose_v5.pdf"
+sni_fields  = [
+  "tp_pop_liberdade", "tp_pop_rua", "tp_pop_profissional",
+  "tp_pop_imigrante", "tp_pop_beneficiario",
+  "st_agravo_aids", "st_agravo_alcolismo", "st_agravo_diabete",
+  "st_agravo_mental", "st_agravo_drogas", "st_agravo_tabaco", "st_agravo_outro",
+  "tp_antirretroviral_tratament",
+]
+
+[dividers]
+apos = [
+  "tp_pop_rua",               # após pop. vulnerável → antes de Forma/Extrapulmonar
+  "ds_extrapulmonar_outro",   # após Forma/Extrapulmonar → antes de agravos
+  "ds_agravo_outro",          # após agravos → antes de Baciloscopia do Escarro
+]
+
+[defaults]
+unidade_saude        = "CTA Marymar Novaes"
+codigo_unidade_saude = "0072"
+uf_residencia        = "BA"
+municipio_residencia = "SALVADOR"
+dt_inicio_tratamento = "today"
+
+[fixed]
+uf_notificacao        = "BA"
+municipio_notificacao = "Salvador"
+ibge_municipio_notif  = "292740"
+
+[hidden]
+campos = [
+  "numero_notificacao",
+  "data_notificacao",
+  "idade_valor",
+  "cep",
+  "ddd_telefone",
+  "ibge_municipio_resid",
+  "distrito",
+  "codigo_logradouro",
+  "geo_campo1",
+  "geo_campo2",
+  "ponto_referencia",
+  "zona",
+  "pais_exterior",
+  # Boletim de acompanhamento — não constam na ficha de notificação
+  "st_baciloscopia_1_mes",
+  "st_baciloscopia_2_mes",
+  "st_baciloscopia_3_mes",
+  "st_baciloscopia_4_mes",
+  "st_baciloscopia_5_mes",
+  "st_baciloscopia_6_mes",
+  "st_baciloscopia_apos_6_mes",
+  "tp_tratamento_acompanhame",
+  "nu_contato_examinado",
+  # Campos de transferência/encerramento (preenchidos em etapas posteriores)
+  "nu_prontuario_atual",
+  "tp_situacao_encerramento",
+  "tp_transf",
+  "co_uf_transf",
+  "co_municipio_transf",
+  "dt_encerramento",
+  "co_uf_atual",
+  "co_municipio_atual",
+  "nu_notificacao_atual",
+  "dt_notificacao_atual",
+  "co_unidade_saude_atual",
+  "co_uf_residencia_atual",
+  "co_municipio_residencia_atual",
+  "nu_cep_residencia_atual",
+  "co_distrito_residencia_atual",
+  "co_bairro_residencia_atual",
+  "no_bairro_residencia_atual",
+]
+
+# ── Widgets customizados por campo ──────────────────────────────────────────
+
+[fields.nome_paciente]
+col_span = 3
+
+[fields.nome_mae]
+col_span = 3
+
+[fields.sexo]
+options       = ["M - Masculino", "F - Feminino", "I - Ignorado"]
+values        = ["M", "F", "I"]
+default_index = 0
+
+[fields.gestante]
+options       = ["1 - 1o Trimestre", "2 - 2o Trimestre", "3 - 3o Trimestre",
+                 "4 - IG Ignorada", "5 - Nao", "6 - Nao se aplica", "9 - Ignorado"]
+values        = ["1", "2", "3", "4", "5", "6", "9"]
+default_index = 5
+
+[fields.raca_cor]
+options       = ["1 - Branca", "2 - Preta", "3 - Amarela", "4 - Parda", "5 - Indigena", "9 - Ignorado"]
+values        = ["1", "2", "3", "4", "5", "9"]
+default_index = 3
+
+[fields.escolaridade]
+options       = ["0 - Analfabeto",
+                 "1 - 1a a 4a serie incompleta EF",
+                 "2 - 4a serie completa EF",
+                 "3 - 5a a 8a serie incompleta EF",
+                 "4 - EF completo",
+                 "5 - EM incompleto",
+                 "6 - EM completo",
+                 "7 - Superior incompleto",
+                 "8 - Superior completo",
+                 "9 - Ignorado",
+                 "10 - Nao se aplica"]
+values        = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+default_index = 9
+
+[fields.tp_entrada]
+options       = ["1 - Caso Novo", "2 - Recidiva", "3 - Reingresso Apos Abandono",
+                 "4 - Nao Sabe", "5 - Transferencia", "6 - Pos-obito"]
+values        = ["1", "2", "3", "4", "5", "6"]
+default_index = 0
+col_span      = 3
+
+[fields.tp_pop_rua]
+col_span      = 4
+
+[fields.ds_extrapulmonar_outro]
+col_span      = 2
+
+[fields.tp_forma]
+widget        = "radio"
+options       = ["1 - Pulmonar", "2 - Extrapulmonar", "3 - Pulmonar + Extrapulmonar"]
+values        = ["1", "2", "3"]
+default_index = 0
+horizontal    = true
+
+[fields.tp_extrapulmonar]
+options       = ["", "1 - Pleural", "2 - Gang. Perif.", "3 - Geniturinaria",
+                 "4 - Ossea", "5 - Ocular", "6 - Miliar",
+                 "7 - Meningoencefalico", "8 - Cutanea", "9 - Laringea", "10 - Outra"]
+values        = ["", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+default_index = 0
+
+[fields.st_baciloscopia_escarro]
+widget        = "radio"
+options       = ["1 - Positiva", "2 - Negativa", "3 - Nao Realizada", "4 - Nao se aplica"]
+values        = ["1", "2", "3", "4"]
+allow_none    = true
+horizontal    = true
+
+[fields.tp_raio_x]
+widget        = "radio"
+options       = ["1 - Suspeito", "2 - Normal", "3 - Outra Patologia", "4 - Nao Realizado"]
+values        = ["1", "2", "3", "4"]
+allow_none    = true
+horizontal    = true
+
+[fields.st_agravo_aids]
+default_index = 0
+
+[fields.tp_antirretroviral_tratament]
+default_index = 0
+
+[fields.tp_hiv]
+widget        = "radio"
+options       = ["1 - Positivo", "2 - Negativo", "3 - Em Andamento", "4 - Nao Realizado"]
+values        = ["1", "2", "3", "4"]
+default_index = 0
+horizontal    = true
+
+[fields.tp_histopatologia]
+widget        = "radio"
+options       = ["1 - Baar Positivo", "2 - Sugestivo de TB", "3 - Nao Sugestivo de TB",
+                 "4 - Em Andamento", "5 - Nao Realizado"]
+values        = ["1", "2", "3", "4", "5"]
+default_index = 4
+horizontal    = false
+
+[fields.tp_cultura_escarro]
+widget        = "radio"
+options       = ["1 - Positivo", "2 - Negativo", "3 - Em Andamento", "4 - Nao Realizado"]
+values        = ["1", "2", "3", "4"]
+default_index = 3
+horizontal    = true
+
+[fields.tp_molecular]
+widget        = "radio"
+options       = ["1 - Detectavel sensivel a Rifampicina",
+                 "2 - Detectavel Resistente a Rifampicina",
+                 "3 - Nao Detectavel", "4 - Inconclusivo", "5 - Nao Realizado"]
+values        = ["1", "2", "3", "4", "5"]
+allow_none    = true
+horizontal    = false
+
+[fields.tp_sensibilidade]
+widget        = "radio"
+options       = ["1 - Resistente somente a Isoniazida",
+                 "2 - Resistente somente a Rifampicina",
+                 "3 - Resistente a Isoniazida e Rifampicina",
+                 "4 - Resistente a outras drogas de 1a linha",
+                 "5 - Sensivel", "6 - Em andamento", "7 - Nao realizado"]
+values        = ["1", "2", "3", "4", "5", "6", "7"]
+default_index = 6
+horizontal    = false

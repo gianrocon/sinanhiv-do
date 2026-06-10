@@ -1,0 +1,97 @@
+[form]
+name        = "Baciloscopia"
+description = "Solicitação de Baciloscopia do Escarro"
+pdf         = "baciloscopia.pdf"
+
+[defaults]
+unidade_saude      = "CTA Marymar Novaes"
+estado             = "BA"
+cidade             = "Salvador"
+encaminhar_cultura = "Sim"
+caso               = "Novo"
+amostra            = "bac_diag_1"
+
+[hidden]
+campos = ["data_atendimento", "tipo_escarro", "trm_tb"]
+
+[dividers]
+apos = ["estado", "conselho", "vulneravel_qual", "amostra"]
+
+# ── Layout ──────────────────────────────────────────────────────────────────
+
+[fields.unidade_saude]
+col_span = 3
+
+[fields.nome_paciente]
+col_span = 3
+
+[fields.cartao_sus]
+col_span = 2
+
+[fields.nome_mae]
+col_span = 4
+
+[fields.logradouro_complemento]
+col_span = 4
+
+[fields.cidade]
+col_span = 1
+
+[fields.estado]
+col_span = 1
+
+[fields.raca]
+col_span = 1
+
+[fields.solicitante]
+col_span = 3
+
+[fields.conselho]
+col_span = 1
+
+# ── Widgets de opções ────────────────────────────────────────────────────────
+
+[fields.sexo]
+widget     = "radio"
+options    = ["M", "F"]
+horizontal = true
+allow_none = true
+col_span   = 1
+
+[fields.caso]
+widget     = "radio"
+options    = ["Novo", "Retratamento"]
+horizontal = true
+allow_none = true
+col_span   = 1
+
+[fields.vulneravel]
+widget     = "radio"
+options    = ["Sim", "Não"]
+horizontal = true
+allow_none = true
+col_span   = 1
+
+[fields.encaminhar_cultura]
+widget     = "radio"
+options    = ["Sim", "Não"]
+horizontal = true
+allow_none = true
+col_span   = 1
+
+[fields.trm_tb]
+widget     = "radio"
+options    = ["Sim", "Não"]
+horizontal = true
+allow_none = true
+col_span   = 1
+
+# ── Amostra (seleção única entre Diagnóstica 1ª/2ª e Controle 1ª–6ª) ────────
+
+[fields.amostra]
+widget     = "radio"
+options    = ["Diag. 1ª amostra", "Diag. 2ª amostra", "Controle 1ª", "Controle 2ª", "Controle 3ª", "Controle 4ª", "Controle 5ª", "Controle 6ª"]
+values     = ["bac_diag_1", "bac_diag_2", "bac_ctrl_1", "bac_ctrl_2", "bac_ctrl_3", "bac_ctrl_4", "bac_ctrl_5", "bac_ctrl_6"]
+horizontal = true
+allow_none = true
+col_span   = 4

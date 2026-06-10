@@ -1,0 +1,192 @@
+[form]
+name = "AIDS Adulto"
+description = "Ficha de Notificação AIDS Adulto"
+pdf = "Aids_adulto_v5.pdf"
+sni_fields = [
+  "sanguinea_drogas", "sanguinea_hemofilia", "sanguinea_transfusao", "sanguinea_acidente",
+  "rj_sarcoma_kaposi", "rj_tb_disseminada", "rj_candidose_oral", "rj_tb_pulmonar",
+  "rj_herpes_zoster", "rj_disfuncao_snc", "rj_diarreia", "rj_febre",
+  "rj_caquexia", "rj_astenia", "rj_dermatite", "rj_anemia", "rj_tosse", "rj_linfadenopatia",
+  "cdc_cancer_cervical", "cdc_candidose_esofago", "cdc_candidose_traqueia",
+  "cdc_citomegalovirose", "cdc_criptococose", "cdc_criptosporidiose",
+  "cdc_herpes_simples", "cdc_histoplasmose", "cdc_isosporidiose",
+  "cdc_leucoencefalopatia", "cdc_linfoma_hodgkin", "cdc_linfoma_cerebro",
+  "cdc_micobacteriose", "cdc_pneumonia_pcp", "cdc_reativacao_chagas",
+  "cdc_salmonelose", "cdc_toxoplasmose",
+]
+
+[dividers]
+# Campo após o qual inserir st.divider() (pelo menos um campo da linha deve constar aqui)
+apos = [
+  "ocupacao",                 # antes de transmissão sexual/vertical
+  "transmissao_vertical",     # após transmissão sexual/vertical → antes de transfusão
+  "transfusao_foi_causa",     # após seção transfusão → antes de testes rápidos
+  "lab_rapidos_data",         # após testes rápidos → antes de triagem
+  "lab_triagem_data",         # após triagem → antes de confirmatório
+  "lab_confirmatorio_data",   # após confirmatório → antes da Página 2
+  "rj_febre",                 # página 2: após critérios RJ/Caracas → antes de CDC
+]
+
+[defaults]
+# Campos editáveis pré-preenchidos no formulário
+unidade_saude      = "CTA Marymar Novaes"
+codigo_unidade_saude = "0072"
+uf_residencia      = "BA"
+municipio_residencia = "SALVADOR"
+
+[fixed]
+# Campos ocultos injetados automaticamente no PDF
+uf_notificacao         = "BA"
+municipio_notificacao  = "Salvador"
+ibge_municipio_notif   = "292740"
+
+[hidden]
+# Campos injetados como vazios (não aparecem no formulário, ignorados pelo pdf_filler)
+campos = [
+  "numero_notificacao",
+  "data_diagnostico",
+  "idade_valor",
+  "idade_unidade",
+  "ibge_municipio_resid",
+  "distrito",
+  "codigo_logradouro",
+  "pais_exterior",
+  "geo_campo1",
+  "geo_campo2",
+  "ponto_referencia",
+  "zona",
+  "ibge_municipio_transfusao",
+  "codigo_instituicao",
+  "criterio_obito",
+  "uf_tratamento",
+  "municipio_tratamento",
+  "ibge_municipio_tratamento",
+  "unidade_tratamento",
+  "codigo_unidade_tratamento",
+  "evolucao_caso",
+  "data_obito",
+  "investigador_nome",
+  "investigador_funcao",
+]
+
+# ── Widgets customizados por campo ──────────────────────────────────────────
+
+[fields.ocupacao]
+col_span = 4
+
+[fields.nome_paciente]
+col_span = 3
+
+[fields.nome_mae]
+col_span = 3
+
+[fields.sexo]
+options       = ["M - Masculino", "F - Feminino", "I - Ignorado"]
+values        = ["M", "F", "I"]
+default_index = 0
+
+[fields.gestante]
+options       = ["1 - 1o Trimestre", "2 - 2o Trimestre", "3 - 3o Trimestre",
+                 "4 - IG Ignorada", "5 - Nao", "6 - Nao se aplica", "9 - Ignorado"]
+values        = ["1", "2", "3", "4", "5", "6", "9"]
+default_index = 5
+
+[fields.raca_cor]
+options       = ["1 - Branca", "2 - Preta", "3 - Amarela", "4 - Parda", "5 - Indigena", "9 - Ignorado"]
+values        = ["1", "2", "3", "4", "5", "9"]
+default_index = 3
+
+[fields.escolaridade]
+options       = ["0 - Analfabeto",
+                 "1 - 1a a 4a serie incompleta EF",
+                 "2 - 4a serie completa EF",
+                 "3 - 5a a 8a serie incompleta EF",
+                 "4 - EF completo",
+                 "5 - EM incompleto",
+                 "6 - EM completo",
+                 "7 - Superior incompleto",
+                 "8 - Superior completo",
+                 "9 - Ignorado",
+                 "10 - Nao se aplica"]
+values        = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+default_index = 9
+
+[fields.transmissao_vertical]
+widget        = "radio"
+options       = ["1 - Sim", "2 - Nao foi transmissao vertical", "9 - Ignorado"]
+values        = ["1", "2", "9"]
+default_index = 1
+horizontal    = false
+col_span      = 2
+
+[fields.transmissao_sexual]
+widget        = "radio"
+options       = ["1 - Relacoes sexuais com homens",
+                 "2 - Relacoes sexuais com mulheres",
+                 "3 - Relacoes sexuais com homens e mulheres",
+                 "4 - Nao foi transmissao sexual",
+                 "9 - Ignorado"]
+values        = ["1", "2", "3", "4", "9"]
+default_index = 0
+horizontal    = false
+col_span      = 2
+
+[fields.lab_triagem_resultado]
+widget        = "radio"
+options       = ["1 - Positivo", "2 - Negativo", "3 - Inconclusivo"]
+values        = ["1", "2", "3"]
+allow_none    = true
+horizontal    = true
+col_span      = 2
+
+[fields.lab_triagem_data]
+col_span      = 2
+
+[fields.lab_rapido1_resultado]
+widget        = "radio"
+options       = ["1 - Positivo", "2 - Negativo", "3 - Inconclusivo"]
+values        = ["1", "2", "3"]
+allow_none    = true
+horizontal    = true
+
+[fields.lab_rapido2_resultado]
+widget        = "radio"
+options       = ["1 - Positivo", "2 - Negativo", "3 - Inconclusivo"]
+values        = ["1", "2", "3"]
+allow_none    = true
+horizontal    = true
+
+[fields.lab_rapido3_resultado]
+widget        = "radio"
+options       = ["1 - Positivo", "2 - Negativo", "3 - Inconclusivo"]
+values        = ["1", "2", "3"]
+allow_none    = true
+horizontal    = true
+
+[fields.lab_confirmatorio_resultado]
+widget        = "radio"
+options       = ["1 - Positivo/reagente", "2 - Negativo/nao reagente",
+                 "3 - Inconclusivo", "4 - Nao realizado", "9 - Ignorado"]
+values        = ["1", "2", "3", "4", "9"]
+allow_none    = true
+horizontal    = true
+col_span      = 3
+
+[fields.lab_confirmatorio_data]
+col_span      = 1
+
+[fields.transfusao_foi_causa]
+widget        = "radio"
+options       = ["1 - Sim", "2 - Nao", "3 - Nao se aplica"]
+values        = ["1", "2", "3"]
+allow_none    = true
+horizontal    = true
+col_span      = 4
+
+[fields.cdc_cd4_350]
+widget        = "radio"
+options       = ["Sim (1)", "Não (2)", "Ignorado (9)"]
+values        = ["1", "2", "9"]
+default_index = 2
+horizontal    = true
+col_span      = 2

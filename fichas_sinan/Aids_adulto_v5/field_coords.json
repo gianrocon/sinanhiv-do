@@ -1,0 +1,607 @@
+{
+  "numero_notificacao": {
+    "page": 1,
+    "x": 480.0,
+    "y": 41.0,
+    "label": "Número da Notificação"
+  },
+  "data_notificacao": {
+    "page": 1,
+    "x": 447.7,
+    "y": 161.2,
+    "label": "Data da Notificação"
+  },
+  "uf_notificacao": {
+    "page": 1,
+    "x": 60.0,
+    "y": 191.0,
+    "label": "UF de Notificação"
+  },
+  "municipio_notificacao": {
+    "page": 1,
+    "x": 100.0,
+    "y": 191.0,
+    "label": "Município de Notificação"
+  },
+  "ibge_municipio_notif": {
+    "page": 1,
+    "x": 487.2,
+    "y": 189.7,
+    "label": "IBGE Município de Notificação"
+  },
+  "unidade_saude": {
+    "page": 1,
+    "x": 80.0,
+    "y": 219.0,
+    "label": "Unidade de Saúde"
+  },
+  "codigo_unidade_saude": {
+    "page": 1,
+    "x": 352.0,
+    "y": 219.0,
+    "label": "Código CNES"
+  },
+  "data_diagnostico": {
+    "page": 1,
+    "x": 455.2,
+    "y": 216.7,
+    "label": "Data do Diagnóstico"
+  },
+  "nome_paciente": {
+    "page": 1,
+    "x": 80.0,
+    "y": 248.0,
+    "label": "Nome do Paciente"
+  },
+  "data_nascimento": {
+    "page": 1,
+    "x": 463.7,
+    "y": 248.1,
+    "label": "Data de Nascimento"
+  },
+  "idade_valor": {
+    "page": 1,
+    "x": 68.0,
+    "y": 280.0,
+    "label": "Idade (Valor)"
+  },
+  "idade_unidade": {
+    "page": 1,
+    "x": 110.0,
+    "y": 271.0,
+    "label": "Idade (Unidade: 1=Hora 2=Dia 3=Mês 4=Ano)"
+  },
+  "sexo": {
+    "page": 1,
+    "x": 232.7,
+    "y": 265.9,
+    "label": "Sexo (M/F/I)"
+  },
+  "gestante": {
+    "page": 1,
+    "x": 427.0,
+    "y": 264.0,
+    "label": "Gestante"
+  },
+  "raca_cor": {
+    "page": 1,
+    "x": 553.7,
+    "y": 266.4,
+    "label": "Raça/Cor"
+  },
+  "escolaridade": {
+    "page": 1,
+    "x": 552.7,
+    "y": 295.7,
+    "label": "Escolaridade"
+  },
+  "cartao_sus": {
+    "page": 1,
+    "x": 66.7,
+    "y": 339.7,
+    "label": "Cartão SUS (15 dígitos)"
+  },
+  "nome_mae": {
+    "page": 1,
+    "x": 250.0,
+    "y": 340.0,
+    "label": "Nome da Mãe"
+  },
+  "uf_residencia": {
+    "page": 1,
+    "x": 60.7,
+    "y": 370.2,
+    "label": "UF de Residência"
+  },
+  "municipio_residencia": {
+    "page": 1,
+    "x": 99.7,
+    "y": 369.3,
+    "label": "Município de Residência"
+  },
+  "ibge_municipio_resid": {
+    "page": 1,
+    "x": 337.7,
+    "y": 369.2,
+    "label": "IBGE Município de Residência"
+  },
+  "distrito": {
+    "page": 1,
+    "x": 436.2,
+    "y": 369.2,
+    "label": "Distrito"
+  },
+  "bairro": {
+    "page": 1,
+    "x": 72.2,
+    "y": 393.7,
+    "label": "Bairro"
+  },
+  "logradouro": {
+    "page": 1,
+    "x": 209.2,
+    "y": 395.7,
+    "label": "Logradouro"
+  },
+  "codigo_logradouro": {
+    "page": 1,
+    "x": 488.7,
+    "y": 393.7,
+    "label": "Código do Logradouro"
+  },
+  "numero_residencia": {
+    "page": 1,
+    "x": 67.7,
+    "y": 418.2,
+    "label": "Número",
+    "display_order": 417.0
+  },
+  "complemento": {
+    "page": 1,
+    "x": 135.7,
+    "y": 417.7,
+    "label": "Complemento",
+    "display_order": 418.5
+  },
+  "geo_campo1": {
+    "page": 1,
+    "x": 428.0,
+    "y": 420.0,
+    "label": "Geo Campo 1"
+  },
+  "geo_campo2": {
+    "page": 1,
+    "x": 70.0,
+    "y": 443.0,
+    "label": "Geo Campo 2"
+  },
+  "ponto_referencia": {
+    "page": 1,
+    "x": 232.0,
+    "y": 443.0,
+    "label": "Ponto de Referência"
+  },
+  "cep": {
+    "page": 1,
+    "x": 464.2,
+    "y": 446.2,
+    "label": "CEP"
+  },
+  "ddd_telefone": {
+    "page": 1,
+    "x": 77.2,
+    "y": 471.6,
+    "label": "(DDD) Telefone"
+  },
+  "zona": {
+    "page": 1,
+    "x": 333.7,
+    "y": 460.2,
+    "label": "Zona (1=Urbana 2=Rural 3=Periurbana 9=Ignorado)"
+  },
+  "pais_exterior": {
+    "page": 1,
+    "x": 372.0,
+    "y": 467.0,
+    "label": "País (exterior)"
+  },
+  "ocupacao": {
+    "page": 1,
+    "x": 78.0,
+    "y": 521.0,
+    "label": "Ocupação"
+  },
+  "transmissao_vertical": {
+    "page": 1,
+    "x": 235.2,
+    "y": 553.1,
+    "label": "Transmissão Vertical"
+  },
+  "transmissao_sexual": {
+    "page": 1,
+    "x": 549.2,
+    "y": 549.1,
+    "label": "Transmissão Sexual"
+  },
+  "sanguinea_drogas": {
+    "page": 1,
+    "x": 284.2,
+    "y": 596.6,
+    "label": "Sanguínea: Drogas Injetáveis"
+  },
+  "sanguinea_hemofilia": {
+    "page": 1,
+    "x": 283.7,
+    "y": 614.6,
+    "label": "Sanguínea: Hemofilia/Hemotransfusão"
+  },
+  "sanguinea_transfusao": {
+    "page": 1,
+    "x": 483.7,
+    "y": 595.1,
+    "label": "Sanguínea: Transfusão Sanguínea"
+  },
+  "sanguinea_acidente": {
+    "page": 1,
+    "x": 483.2,
+    "y": 612.1,
+    "label": "Sanguínea: Acidente c/ Material Biológico"
+  },
+  "data_transfusao_acidente": {
+    "page": 1,
+    "x": 75.7,
+    "y": 652.3,
+    "label": "Data da Transfusão/Acidente"
+  },
+  "uf_transfusao": {
+    "page": 1,
+    "x": 191.2,
+    "y": 650.9,
+    "label": "UF da Transfusão"
+  },
+  "municipio_transfusao": {
+    "page": 1,
+    "x": 247.7,
+    "y": 651.4,
+    "label": "Município da Transfusão"
+  },
+  "ibge_municipio_transfusao": {
+    "page": 1,
+    "x": 489.7,
+    "y": 649.7,
+    "label": "IBGE Município da Transfusão"
+  },
+  "instituicao_transfusao": {
+    "page": 1,
+    "x": 103.2,
+    "y": 679.4,
+    "label": "Instituição da Transfusão"
+  },
+  "codigo_instituicao": {
+    "page": 1,
+    "x": 482.7,
+    "y": 678.4,
+    "label": "Código da Instituição"
+  },
+  "transfusao_foi_causa": {
+    "page": 1,
+    "x": 543.0,
+    "y": 702.0,
+    "label": "Transfusão/Acidente foi Causa do HIV?"
+  },
+  "lab_rapido1_resultado": {
+    "page": 1,
+    "x": 153.7,
+    "y": 796.2,
+    "display_order": 705,
+    "label": "Teste Rápido 1: Resultado"
+  },
+  "lab_rapido2_resultado": {
+    "page": 1,
+    "x": 234.7,
+    "y": 797.7,
+    "display_order": 706,
+    "label": "Teste Rápido 2: Resultado"
+  },
+  "lab_rapido3_resultado": {
+    "page": 1,
+    "x": 311.2,
+    "y": 795.7,
+    "display_order": 707,
+    "label": "Teste Rápido 3: Resultado"
+  },
+  "lab_rapidos_data": {
+    "page": 1,
+    "x": 379.7,
+    "y": 803.3,
+    "display_order": 708,
+    "label": "Testes Rápidos: Data da Coleta"
+  },
+  "lab_triagem_resultado": {
+    "page": 1,
+    "x": 111.2,
+    "y": 765.7,
+    "display_order": 715,
+    "label": "Triagem: Resultado"
+  },
+  "lab_triagem_data": {
+    "page": 1,
+    "x": 171.7,
+    "y": 767.8,
+    "display_order": 716,
+    "label": "Triagem: Data da Coleta"
+  },
+  "lab_confirmatorio_resultado": {
+    "page": 1,
+    "x": 310.2,
+    "y": 765.2,
+    "display_order": 725,
+    "label": "Confirmatório: Resultado"
+  },
+  "lab_confirmatorio_data": {
+    "page": 1,
+    "x": 395.7,
+    "y": 768.3,
+    "display_order": 726,
+    "label": "Confirmatório: Data da Coleta"
+  },
+  "rj_sarcoma_kaposi": {
+    "page": 2,
+    "x": 67.0,
+    "y": 50.0,
+    "label": "RJ/Caracas: Sarcoma de Kaposi"
+  },
+  "rj_tb_disseminada": {
+    "page": 2,
+    "x": 67.0,
+    "y": 64.0,
+    "label": "RJ/Caracas: TB Disseminada"
+  },
+  "rj_candidose_oral": {
+    "page": 2,
+    "x": 67.0,
+    "y": 79.0,
+    "label": "RJ/Caracas: Candidose Oral"
+  },
+  "rj_tb_pulmonar": {
+    "page": 2,
+    "x": 67.0,
+    "y": 94.0,
+    "label": "RJ/Caracas: TB Pulmonar"
+  },
+  "rj_herpes_zoster": {
+    "page": 2,
+    "x": 67.0,
+    "y": 108.0,
+    "label": "RJ/Caracas: Herpes Zoster"
+  },
+  "rj_disfuncao_snc": {
+    "page": 2,
+    "x": 67.0,
+    "y": 123.0,
+    "label": "RJ/Caracas: Disfunção SNC"
+  },
+  "rj_diarreia": {
+    "page": 2,
+    "x": 67.0,
+    "y": 137.0,
+    "label": "RJ/Caracas: Diarreia ≥1 Mês"
+  },
+  "rj_febre": {
+    "page": 2,
+    "x": 67.0,
+    "y": 150.0,
+    "label": "RJ/Caracas: Febre ≥38°C por ≥1 Mês"
+  },
+  "rj_caquexia": {
+    "page": 2,
+    "x": 301.0,
+    "y": 50.0,
+    "label": "RJ/Caracas: Caquexia/Perda de Peso >10%"
+  },
+  "rj_astenia": {
+    "page": 2,
+    "x": 301.0,
+    "y": 65.0,
+    "label": "RJ/Caracas: Astenia ≥1 Mês"
+  },
+  "rj_dermatite": {
+    "page": 2,
+    "x": 301.0,
+    "y": 79.0,
+    "label": "RJ/Caracas: Dermatite Persistente"
+  },
+  "rj_anemia": {
+    "page": 2,
+    "x": 301.0,
+    "y": 94.0,
+    "label": "RJ/Caracas: Anemia/Linfopenia"
+  },
+  "rj_tosse": {
+    "page": 2,
+    "x": 301.0,
+    "y": 108.0,
+    "label": "RJ/Caracas: Tosse Persistente"
+  },
+  "rj_linfadenopatia": {
+    "page": 2,
+    "x": 301.0,
+    "y": 121.0,
+    "label": "RJ/Caracas: Linfadenopatia"
+  },
+  "cdc_cancer_cervical": {
+    "page": 2,
+    "x": 67.0,
+    "y": 183.0,
+    "label": "CDC: Câncer Cervical Invasivo"
+  },
+  "cdc_candidose_esofago": {
+    "page": 2,
+    "x": 67.0,
+    "y": 196.0,
+    "label": "CDC: Candidose de Esôfago"
+  },
+  "cdc_candidose_traqueia": {
+    "page": 2,
+    "x": 67.0,
+    "y": 211.0,
+    "label": "CDC: Candidose de Traqueia"
+  },
+  "cdc_citomegalovirose": {
+    "page": 2,
+    "x": 67.0,
+    "y": 226.0,
+    "label": "CDC: Citomegalovirose"
+  },
+  "cdc_criptococose": {
+    "page": 2,
+    "x": 67.0,
+    "y": 240.0,
+    "label": "CDC: Criptococose"
+  },
+  "cdc_criptosporidiose": {
+    "page": 2,
+    "x": 67.0,
+    "y": 256.0,
+    "label": "CDC: Criptosporidiose"
+  },
+  "cdc_herpes_simples": {
+    "page": 2,
+    "x": 67.0,
+    "y": 271.0,
+    "label": "CDC: Herpes Simples"
+  },
+  "cdc_histoplasmose": {
+    "page": 2,
+    "x": 67.0,
+    "y": 285.0,
+    "label": "CDC: Histoplasmose"
+  },
+  "cdc_isosporidiose": {
+    "page": 2,
+    "x": 67.0,
+    "y": 300.0,
+    "label": "CDC: Isosporidiose"
+  },
+  "cdc_leucoencefalopatia": {
+    "page": 2,
+    "x": 300.0,
+    "y": 182.0,
+    "label": "CDC: Leucoencefalopatia"
+  },
+  "cdc_linfoma_hodgkin": {
+    "page": 2,
+    "x": 300.0,
+    "y": 198.0,
+    "label": "CDC: Linfoma não-Hodgkin"
+  },
+  "cdc_linfoma_cerebro": {
+    "page": 2,
+    "x": 300.0,
+    "y": 213.0,
+    "label": "CDC: Linfoma Primário do Cérebro"
+  },
+  "cdc_micobacteriose": {
+    "page": 2,
+    "x": 300.0,
+    "y": 228.0,
+    "label": "CDC: Micobacteriose Disseminada"
+  },
+  "cdc_pneumonia_pcp": {
+    "page": 2,
+    "x": 300.0,
+    "y": 242.0,
+    "label": "CDC: Pneumonia por P. carinii"
+  },
+  "cdc_reativacao_chagas": {
+    "page": 2,
+    "x": 300.0,
+    "y": 257.0,
+    "label": "CDC: Reativação de Doença de Chagas"
+  },
+  "cdc_salmonelose": {
+    "page": 2,
+    "x": 300.0,
+    "y": 272.0,
+    "label": "CDC: Salmonelose"
+  },
+  "cdc_toxoplasmose": {
+    "page": 2,
+    "x": 300.0,
+    "y": 287.0,
+    "label": "CDC: Toxoplasmose Cerebral"
+  },
+  "cdc_cd4_350": {
+    "page": 2,
+    "x": 300.0,
+    "y": 301.0,
+    "label": "CDC: CD4+ < 350 cel/mm³"
+  },
+  "criterio_obito": {
+    "page": 2,
+    "x": 504.7,
+    "y": 329.5,
+    "label": "Critério Óbito"
+  },
+  "uf_tratamento": {
+    "page": 2,
+    "x": 58.0,
+    "y": 379.0,
+    "label": "UF do Tratamento"
+  },
+  "municipio_tratamento": {
+    "page": 2,
+    "x": 98.0,
+    "y": 379.0,
+    "label": "Município do Tratamento"
+  },
+  "ibge_municipio_tratamento": {
+    "page": 2,
+    "x": 260.7,
+    "y": 377.9,
+    "label": "IBGE Município do Tratamento"
+  },
+  "unidade_tratamento": {
+    "page": 2,
+    "x": 357.0,
+    "y": 379.0,
+    "label": "Unidade de Saúde do Tratamento"
+  },
+  "codigo_unidade_tratamento": {
+    "page": 2,
+    "x": 479.2,
+    "y": 373.4,
+    "label": "Código CNES Tratamento"
+  },
+  "evolucao_caso": {
+    "page": 2,
+    "x": 426.2,
+    "y": 394.0,
+    "label": "Evolução do Caso"
+  },
+  "data_obito": {
+    "page": 2,
+    "x": 457.7,
+    "y": 409.0,
+    "label": "Data do Óbito"
+  },
+  "investigador_nome": {
+    "page": 2,
+    "x": 80.0,
+    "y": 440.0,
+    "label": "Nome do Investigador"
+  },
+  "investigador_funcao": {
+    "page": 2,
+    "x": 357.0,
+    "y": 440.0,
+    "label": "Função do Investigador"
+  },
+  "cpf": {
+    "page": 1,
+    "x": 0,
+    "y": 248.05,
+    "label": "CPF",
+    "skip_pdf": true
+  }
+}

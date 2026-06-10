@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparador de PDFs - Carga Viral</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            padding: 20px;
+        }
+        
+        .header {
+            background: #333;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .pdf-viewer {
+            background: white;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .pdf-viewer h2 {
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .pdf-canvas {
+            border: 1px solid #ddd;
+            display: block;
+            max-width: 100%;
+            background: #f9f9f9;
+            cursor: crosshair;
+        }
+        
+        .info-panel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border: 2px solid #333;
+            border-radius: 5px;
+            padding: 15px;
+            width: 300px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .coords-display {
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 3px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 11px;
+        }
+        
+        .instructions {
+            background: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 3px;
+        }
+        
+        .instruction-title {
+            font-weight: bold;
+            color: #1976D2;
+            margin-bottom: 8px;
+        }
+        
+        ul {
+            margin-left: 20px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔍 Comparador de PDFs - Carga Viral</h1>
+        <p>Clique em qualquer ponto em um dos PDFs para ver as coordenadas (x, y)</p>
+    </div>
+    
+    <div class="instructions">
+        <div class="instruction-title">📝 Como usar:</div>
+        <ul>
+            <li>Clique em qualquer campo ou área para ver as coordenadas X, Y</li>
+            <li>Compare as coordenadas entre os dois PDFs</li>
+            <li>Se houver diferença, você terá que reajustar o campo_coords.json</li>
+            <li>Use o painel de informações na direita para rastrear offsets</li>
+        </ul>
+    </div>
+    
+    <div class="container">
+        <div class="pdf-viewer">
+            <h2>📄 DIGITAVEL.PDF (com campos de formulário)</h2>
+            <canvas id="canvasDigitavel" class="pdf-canvas"></canvas>
+            <p style="margin-top: 10px; font-size: 12px; color: #666;">60 campos de formulário</p>
+        </div>
+        
+        <div class="pdf-viewer">
+            <h2>📄 IMPRESSAO.PDF (layout de impressão)</h2>
+            <canvas id="canvasImpressao" class="pdf-canvas"></canvas>
+            <p style="margin-top: 10px; font-size: 12px; color: #666;">Verificar alinhamento visual</p>
+        </div>
+    </div>
+    
+    <div class="info-panel">
+        <div class="info-label">ℹ️ Coordenadas Clicadas</div>
+        <div class="coords-display">
+            <div>Digitável:<br><span id="coordsDigitavel">Clique no PDF esquerdo</span></div>
+            <div style="margin-top: 10px;">Impressão:<br><span id="coordsImpressao">Clique no PDF direito</span></div>
+        </div>
+        
+        <div class="info-label" style="margin-top: 15px;">📊 Offset Detectado</div>
+        <div class="coords-display">
+            <div>ΔX: <span id="offsetX">-</span></div>
+            <div>ΔY: <span id="offsetY">-</span></div>
+        </div>
+        
+        <div class="info-label" style="margin-top: 15px;">🎯 Campo Próximo</div>
+        <div id="nearestField" style="background: #f0f0f0; padding: 10px; border-radius: 3px; font-size: 11px;">
+            Nenhum campo selecionado
+        </div>
+    </div>
+    
+    <script>
+        const campos = [{"nome": "1Instituição solicitante carimbo padrão", "tipo": "texto", "coordenadas": {"x1": 18.947, "y1": 766.329, "x2": 420.965, "y2": 781.417}, "max_caracteres": 100}, {"nome": "2 CNES", "tipo": "texto", "coordenadas": {"x1": 476.884, "y1": 769.549, "x2": 574.445, "y2": 785.029}, "max_caracteres": 15}, {"nome": "3 CPF PACIENTE", "tipo": "texto", "coordenadas": {"x1": 18.058, "y1": 724.549, "x2": 143.226, "y2": 739.268}, "max_caracteres": 14}, {"nome": "3-indCPF", "tipo": "texto", "coordenadas": {"x1": 156.842, "y1": 723.637, "x2": 172.024, "y2": 744.21}, "max_caracteres": 1}, {"nome": "4 CNS PACIENTE", "tipo": "texto", "coordenadas": {"x1": 305.14, "y1": 723.691, "x2": 430.545, "y2": 736.527}, "max_caracteres": 15}, {"nome": "5-ident_preferencial", "tipo": "escolha", "coordenadas": {"x1": 511.662, "y1": 722.775, "x2": 575.841, "y2": 739.407}, "max_caracteres": null, "opcoes": ["Selecione uma opção", "Nome Civil", "Nome Social"]}, {"nome": "6-nomecivil", "tipo": "texto", "coordenadas": {"x1": 22.2007, "y1": 692.696, "x2": 574.379, "y2": 708.79}, "max_caracteres": 105}, {"nome": "7-nomesocial", "tipo": "texto", "coordenadas": {"x1": 23.1088, "y1": 664.341, "x2": 572.673, "y2": 680.603}, "max_caracteres": 105}, {"nome": "8 Data de Nascimento", "tipo": "texto", "coordenadas": {"x1": 14.8917, "y1": 632.511, "x2": 106.572, "y2": 648.663}, "max_caracteres": null}, {"nome": "9 SEXO", "tipo": "texto", "coordenadas": {"x1": 112.731, "y1": 632.983, "x2": 126.82, "y2": 650.348}, "max_caracteres": 1}, {"nome": "10-País_nasc", "tipo": "texto", "coordenadas": {"x1": 208.371, "y1": 633.982, "x2": 363.204, "y2": 650.745}, "max_caracteres": 30}, {"nome": "11-munic-nasc", "tipo": "texto", "coordenadas": {"x1": 367.596, "y1": 632.479, "x2": 510.634, "y2": 648.248}, "max_caracteres": 30}, {"nome": "12-UF_nasc", "tipo": "escolha", "coordenadas": {"x1": 561.224, "y1": 634.8, "x2": 586.768, "y2": 657.418}, "max_caracteres": null, "opcoes": [" ", "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"]}, {"nome": "13-gênero", "tipo": "escolha", "coordenadas": {"x1": 128.101, "y1": 609.685, "x2": 339.513, "y2": 626.07}, "max_caracteres": null, "opcoes": ["Selecione uma opção", "Mulher CIS", "Homem CIS", "Mulher trans", "Homem trans", "Travesti", "Não binário"]}, {"nome": "14-Orientação", "tipo": "escolha", "coordenadas": {"x1": 446.709, "y1": 608.549, "x2": 578.233, "y2": 624.934}, "max_caracteres": null, "opcoes": ["Selecione uma opção", "Heterossexual", "Bissexual", "Homossexual/Gay/Lésbica"]}, {"nome": "15 RAÇA", "tipo": "texto", "coordenadas": {"x1": 14.3705, "y1": 577.755, "x2": 28.4065, "y2": 594.247}, "max_caracteres": 1}, {"nome": "15 ETNIA", "tipo": "texto", "coordenadas": {"x1": 75.4484, "y1": 576.49, "x2": 122.712, "y2": 586.102}, "max_caracteres": 20}, {"nome": "16 Escolaridade", "tipo": "texto", "coordenadas": {"x1": 205.402, "y1": 577.119, "x2": 218.429, "y2": 593.354}, "max_caracteres": 1}, {"nome": "17-Gestante", "tipo": "texto", "coordenadas": {"x1": 378.718, "y1": 577.061, "x2": 391.912, "y2": 592.975}, "max_caracteres": 1}, {"nome": "18-IG", "tipo": "texto", "coordenadas": {"x1": 449.026, "y1": 573.644, "x2": 465.714, "y2": 586.975}, "max_caracteres": 2}, {"nome": "19 ddd", "tipo": "texto", "coordenadas": {"x1": 508.945, "y1": 572.226, "x2": 524.592, "y2": 586.974}, "max_caracteres": 5}, {"nome": "20 Nome do Responsável se usuário sus for menor de idade", "tipo": "texto", "coordenadas": {"x1": 105.768, "y1": 546.062, "x2": 573.845, "y2": 562.229}, "max_caracteres": 105}, {"nome": "21 CPF do Responsável se usuário sus for menor de idade", "tipo": "texto", "coordenadas": {"x1": 14.8675, "y1": 515.653, "x2": 150.818, "y2": 528.284}, "max_caracteres": null}, {"nome": "22  Nome da mãe", "tipo": "texto", "coordenadas": {"x1": 157.314, "y1": 516.638, "x2": 573.245, "y2": 533.798}, "max_caracteres": 100}, {"nome": "19 TEL", "tipo": "texto", "coordenadas": {"x1": 525.282, "y1": 572.226, "x2": 580.802, "y2": 586.975}, "max_caracteres": 10}, {"nome": "20 prontuário", "tipo": "texto", "coordenadas": {"x1": 20.4579, "y1": 547.681, "x2": 91.2509, "y2": 562.43}, "max_caracteres": 10}, {"nome": "23 endereco", "tipo": "texto", "coordenadas": {"x1": 29.3162, "y1": 488.687, "x2": 577.782, "y2": 504.102}, "max_caracteres": 100}, {"nome": "24 Bairro", "tipo": "texto", "coordenadas": {"x1": 27.3363, "y1": 454.302, "x2": 202.745, "y2": 471.462}, "max_caracteres": 35}, {"nome": "25 CEP", "tipo": "texto", "coordenadas": {"x1": 210.185, "y1": 454.898, "x2": 282.37, "y2": 471.092}, "max_caracteres": null}, {"nome": "26 MUNICIPIO de residência do usuário sus", "tipo": "texto", "coordenadas": {"x1": 290.781, "y1": 454.252, "x2": 516.643, "y2": 471.412}, "max_caracteres": 35}, {"nome": "27-UF_resid", "tipo": "escolha", "coordenadas": {"x1": 561.756, "y1": 457.221, "x2": 591.428, "y2": 479.839}, "max_caracteres": null, "opcoes": [" ", "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"]}, {"nome": "28-motivo", "tipo": "escolha", "coordenadas": {"x1": 27.2754, "y1": 388.511, "x2": 286.166, "y2": 408.511}, "max_caracteres": null, "opcoes": ["Selecione uma opção", "Investigação de infecção viral aguda pelo HIV", "Diagnóstico", "Monitoramento de pessoas que estão em tratamento antirretroviral28.4", "Avaliação de pessoas em perda de seguimento"]}, {"nome": "29 simultanea", "tipo": "escolha", "coordenadas": {"x1": 402.36, "y1": 390.653, "x2": 474.36, "y2": 405.089}, "max_caracteres": null, "opcoes": ["Selecione uma opção", "Sim", "Não"]}, {"nome": "30 CID10", "tipo": "escolha", "coordenadas": {"x1": 70.0434, "y1": 349.508, "x2": 171.28, "y2": 371.799}, "max_caracteres": null, "opcoes": ["Selecione uma opção", "B24", "Outro**"]}, {"nome": "30 outro", "tipo": "texto", "coordenadas": {"x1": 252.742, "y1": 351.222, "x2": 575.67, "y2": 368.862}, "max_caracteres": 70}, {"nome": "31 Nome do Profissional Solicitante", "tipo": "texto", "coordenadas": {"x1": 31.0385, "y1": 311.431, "x2": 403.072, "y2": 326.094}, "max_caracteres": 80}, {"nome": "33 conselho", "tipo": "texto", "coordenadas": {"x1": 62.8398, "y1": 281.917, "x2": 208.462, "y2": 299.677}, "max_caracteres": 40}, {"nome": "34 Data da Solicitação", "tipo": "texto", "coordenadas": {"x1": 241.857, "y1": 282.717, "x2": 375.657, "y2": 297.866}, "max_caracteres": null}, {"nome": "35 Nome de instituição", "tipo": "texto", "coordenadas": {"x1": 25.7037, "y1": 240.212, "x2": 398.324, "y2": 255.692}, "max_caracteres": 90}, {"nome": "36 Data da coleta", "tipo": "texto", "coordenadas": {"x1": 427.571, "y1": 239.032, "x2": 502.866, "y2": 254.512}, "max_caracteres": null}, {"nome": "37 Hora da Coleta", "tipo": "texto", "coordenadas": {"x1": 530.348, "y1": 239.648, "x2": 565.68, "y2": 255.128}, "max_caracteres": null}, {"nome": "38 simultanea", "tipo": "escolha", "coordenadas": {"x1": 284.668, "y1": 214.553, "x2": 356.668, "y2": 234.662}, "max_caracteres": null, "opcoes": ["Selecione uma opção", "Sim", "Não"]}, {"nome": "39 codigo", "tipo": "escolha", "coordenadas": {"x1": 157.804, "y1": 171.095, "x2": 502.094, "y2": 191.204}, "max_caracteres": null, "opcoes": ["Selecione uma opção", "02.02.03.107-1 / Quantificação do RNA HIV-1", "02.13.01.078-0 / DETECÇÃO RÁPIDA DA CARGA VIRAL DO HIV"]}, {"nome": "40 Nome de instituição", "tipo": "texto", "coordenadas": {"x1": 15.6189, "y1": 131.168, "x2": 378.715, "y2": 146.648}, "max_caracteres": 70}, {"nome": "41 CNES", "tipo": "texto", "coordenadas": {"x1": 382.074, "y1": 131.656, "x2": 465.159, "y2": 147.136}, "max_caracteres": 15}, {"nome": "42 Data do recebimento", "tipo": "texto", "coordenadas": {"x1": 467.531, "y1": 130.937, "x2": 525.578, "y2": 146.417}, "max_caracteres": null}, {"nome": "43 Hora do recebimento", "tipo": "texto", "coordenadas": {"x1": 536.092, "y1": 129.705, "x2": 571.423, "y2": 145.185}, "max_caracteres": null}, {"nome": "44 n solicitação", "tipo": "texto", "coordenadas": {"x1": 48.4023, "y1": 98.8951, "x2": 130.449, "y2": 114.375}, "max_caracteres": 10}, {"nome": "45 Identificador da amostra", "tipo": "texto", "coordenadas": {"x1": 167.705, "y1": 98.6626, "x2": 275.142, "y2": 114.023}, "max_caracteres": 20}, {"nome": "46 Responsável", "tipo": "texto", "coordenadas": {"x1": 289.099, "y1": 96.4808, "x2": 577.885, "y2": 111.841}, "max_caracteres": 65}, {"nome": "47 Data do resultado", "tipo": "texto", "coordenadas": {"x1": 37.0473, "y1": 59.3299, "x2": 119.095, "y2": 74.81}, "max_caracteres": null}, {"nome": "48-cond", "tipo": "texto", "coordenadas": {"x1": 140.516, "y1": 62.3565, "x2": 153.71, "y2": 78.2704}, "max_caracteres": 1}, {"nome": "49 material biológico", "tipo": "texto", "coordenadas": {"x1": 33.3728, "y1": 24.0044, "x2": 127.869, "y2": 41.6445}, "max_caracteres": 30}, {"nome": "50-copias/mL", "tipo": "texto", "coordenadas": {"x1": 153.074, "y1": 23.8638, "x2": 219.778, "y2": 41.5038}, "max_caracteres": 30}, {"nome": "51 log", "tipo": "texto", "coordenadas": {"x1": 249.401, "y1": 23.8121, "x2": 309.762, "y2": 41.4521}, "max_caracteres": 30}, {"nome": "52 volume da amostra", "tipo": "texto", "coordenadas": {"x1": 336.5, "y1": 23.9144, "x2": 403.204, "y2": 41.5544}, "max_caracteres": 30}, {"nome": "53 Técnica utilizada", "tipo": "texto", "coordenadas": {"x1": 413.039, "y1": 24.3001, "x2": 579.697, "y2": 41.9402}, "max_caracteres": 30}, {"nome": "Button1", "tipo": "botao", "coordenadas": {"x1": 186.479, "y1": 4.70737, "x2": 231.343, "y2": 19.1441}, "max_caracteres": null}, {"nome": "Button2", "tipo": "botao", "coordenadas": {"x1": 234.751, "y1": 4.57837, "x2": 315.478, "y2": 19.3423}, "max_caracteres": null}, {"nome": "Button3", "tipo": "botao", "coordenadas": {"x1": 318.786, "y1": 4.47847, "x2": 375.623, "y2": 19.2421}, "max_caracteres": null}];
+        
+        const canvasD = document.getElementById('canvasDigitavel');
+        const canvasI = document.getElementById('canvasImpressao');
+        const ctxD = canvasD.getContext('2d');
+        const ctxI = canvasI.getContext('2d');
+        
+        // Dimensões do PDF (595.8 x 842.4)
+        const pdfWidth = 595.8;
+        const pdfHeight = 842.4;
+        
+        // Escala para o canvas (deixar 1:1 ou com zoom)
+        const scale = 0.6;  // 60% do tamanho real
+        
+        canvasD.width = pdfWidth * scale;
+        canvasD.height = pdfHeight * scale;
+        canvasI.width = pdfWidth * scale;
+        canvasI.height = pdfHeight * scale;
+        
+        // Desenhar grid e campos
+        function drawGrid(ctx, isDigitavel) {
+            // Fundo
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+            
+            // Grid leve
+            ctx.strokeStyle = '#f0f0f0';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= ctx.canvas.width; i += 50) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i, ctx.canvas.height);
+                ctx.stroke();
+            }
+            for (let i = 0; i <= ctx.canvas.height; i += 50) {
+                ctx.beginPath();
+                ctx.moveTo(0, i);
+                ctx.lineTo(ctx.canvas.width, i);
+                ctx.stroke();
+            }
+            
+            // Desenhar campos
+            campos.forEach((campo, idx) => {
+                if (!campo.coordenadas) return;
+                
+                const coord = campo.coordenadas;
+                const x1 = coord.x1 * scale;
+                const y1 = coord.y1 * scale;
+                const x2 = coord.x2 * scale;
+                const y2 = coord.y2 * scale;
+                
+                // Cor por tipo
+                let color = '#ccc';
+                if (campo.tipo === 'texto') color = '#4CAF50';  // Verde
+                if (campo.tipo === 'escolha') color = '#2196F3'; // Azul
+                if (campo.tipo === 'botao') color = '#FF9800';   // Laranja
+                
+                // Desenhar retângulo
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 1;
+                ctx.strokeRect(x1, y1, x2 - x1, y2 - y1);
+                
+                // Label pequeno
+                ctx.fillStyle = color;
+                ctx.font = '9px Arial';
+                ctx.fillText((idx+1).toString(), x1 + 2, y1 + 10);
+            });
+            
+            // Legenda
+            ctx.fillStyle = '#333';
+            ctx.font = 'bold 12px Arial';
+            ctx.fillText('Verde = Texto | Azul = Escolha | Laranja = Botão', 10, 20);
+        }
+        
+        drawGrid(ctxD);
+        drawGrid(ctxI);
+        
+        // Eventos de clique
+        let lastDigitavelCoord = null;
+        let lastImpressaoCoord = null;
+        
+        canvasD.addEventListener('click', (e) => {
+            const rect = canvasD.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / scale;
+            const y = (e.clientY - rect.top) / scale;
+            lastDigitavelCoord = {x, y};
+            
+            document.getElementById('coordsDigitavel').innerHTML = 
+                `X: ${x.toFixed(1)}<br>Y: ${y.toFixed(1)}`;
+            
+            updateOffsets();
+            findNearestField(x, y);
+        });
+        
+        canvasI.addEventListener('click', (e) => {
+            const rect = canvasI.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / scale;
+            const y = (e.clientY - rect.top) / scale;
+            lastImpressaoCoord = {x, y};
+            
+            document.getElementById('coordsImpressao').innerHTML = 
+                `X: ${x.toFixed(1)}<br>Y: ${y.toFixed(1)}`;
+            
+            updateOffsets();
+        });
+        
+        function updateOffsets() {
+            if (lastDigitavelCoord && lastImpressaoCoord) {
+                const dx = lastImpressaoCoord.x - lastDigitavelCoord.x;
+                const dy = lastImpressaoCoord.y - lastDigitavelCoord.y;
+                
+                document.getElementById('offsetX').innerHTML = dx > 0 ? `+${dx.toFixed(2)}` : `${dx.toFixed(2)}`;
+                document.getElementById('offsetY').innerHTML = dy > 0 ? `+${dy.toFixed(2)}` : `${dy.toFixed(2)}`;
+            }
+        }
+        
+        function findNearestField(x, y) {
+            let nearest = null;
+            let minDist = Infinity;
+            
+            campos.forEach((campo, idx) => {
+                if (!campo.coordenadas) return;
+                
+                const coord = campo.coordenadas;
+                const centerX = (coord.x1 + coord.x2) / 2;
+                const centerY = (coord.y1 + coord.y2) / 2;
+                
+                const dist = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
+                
+                if (dist < minDist) {
+                    minDist = dist;
+                    nearest = {idx, campo, dist, centerX, centerY};
+                }
+            });
+            
+            if (nearest && minDist < 100) {
+                const c = nearest.campo;
+                let html = `<strong>[${nearest.idx + 1}] ${c.nome}</strong><br>`;
+                html += `Tipo: ${c.tipo}<br>`;
+                html += `Distância: ${nearest.dist.toFixed(1)}px<br>`;
+                html += `Centro: (${nearest.centerX.toFixed(1)}, ${nearest.centerY.toFixed(1)})`;
+                document.getElementById('nearestField').innerHTML = html;
+            } else {
+                document.getElementById('nearestField').innerHTML = 'Nenhum campo próximo';
+            }
+        }
+    </script>
+</body>
+</html>
